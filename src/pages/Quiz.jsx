@@ -14,18 +14,17 @@ function Quiz() {
     data: quizzes,
     isPending,
     error,
-  } = useFetch(`https://json-api.uz/api/project/f-quiz/quizzes?=${title}`);
-
+  } = useFetch(`https://json-api.uz/api/project/f-quiz/quizzes?title=${title}`);
   useEffect(() => {
     document.title = "Quiz" + " " + title;
   }, [title]);
 
   return (
-    <div className="quiz-container container">
+    <section className="quiz-container container">
       {isPending && <h3>Loading...</h3>}
       {error && <h3>Something went wrong</h3>}
       {quizzes && <Test questions={quizzes.data[0]} />}
-    </div>
+    </section>
   );
 }
 
